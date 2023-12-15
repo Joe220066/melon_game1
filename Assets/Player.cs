@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public GameObject Instantiate_Position;
     public GameObject ball;
     [SerializeField] float MoveSpeed;
+    bool i = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +34,14 @@ public class Player : MonoBehaviour
                 transform.Translate(MoveSpeed * Time.deltaTime, 0f, 0f);
             }
         }
-        else if (Input.GetKey(KeyCode.DownArrow) )
+        else if (Input.GetKey(KeyCode.DownArrow) && i)
         {
-            float[] size_array = { 0.4f, 0.5f, 0.62f, 0.77f, 0.95f, 1.18f, 1.47f, 1.83f, 2.27f, 2.82f, 3.5f };
-            Instantiate(ball, Instantiate_Position.transform.position,Instantiate_Position.transform.rotation);
+            Instantiate(ball, Instantiate_Position.transform.position, Quaternion.identity);
+            i = false;
+        }
+        if (KeyUpEvent(KeyCode.DownArrow))
+        {
+            i = true;
         }
     }
 }
