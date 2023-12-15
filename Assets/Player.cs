@@ -1,17 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Ball
-{
-    public Ball(float x, float y, int size)
-    {
+using UnityEngine.UIElements;
 
-    }
-    float[] size_array = { 0.4f, 0.5f, 0.62f, 0.77f, 0.95f, 1.18f, 1.47f, 1.83f, 2.27f, 2.82f, 3.5f };
-
-}
 public class Player : MonoBehaviour
 {
+    public GameObject Instantiate_Position;
+    public GameObject ball;
     [SerializeField] float MoveSpeed;
     // Start is called before the first frame update
     void Start()
@@ -38,9 +33,10 @@ public class Player : MonoBehaviour
                 transform.Translate(MoveSpeed * Time.deltaTime, 0f, 0f);
             }
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) )
         {
-            
+            float[] size_array = { 0.4f, 0.5f, 0.62f, 0.77f, 0.95f, 1.18f, 1.47f, 1.83f, 2.27f, 2.82f, 3.5f };
+            Instantiate(ball, Instantiate_Position.transform.position,Instantiate_Position.transform.rotation);
         }
     }
 }
