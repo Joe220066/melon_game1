@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Instantiate_Position: {fileID: 1233547026}
-  ball: {fileID: 0}
+  ball: {fileID: 2702136187161538569, guid: 31aa58376b7a14147960c7bfe88bfe37, type: 3}
   MoveSpeed: 5
 --- !u!1 &2097129040
 GameObject:
