@@ -11,12 +11,15 @@ public class Ball : MonoBehaviour
     public float size = 0;
     public GameObject ball;
     float[] size_array = { 0.4f, 0.5f, 0.62f, 0.77f, 0.95f, 1.18f, 1.47f, 1.83f, 2.27f, 2.82f, 3.5f };
+    int i = 0;
     void Resize(int s)
     {
         size = size_array[s];
         transform.tag = $"ball{s}";
         transform.localScale = new UnityEngine.Vector3(size, size, 0f);
+        i = 0;
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +27,17 @@ public class Ball : MonoBehaviour
         {
             System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
             int a = ri.Next(0, 3);
-            Resize(a);
+            Resize(0);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (GetComponent<Transform>().position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
     void OnCollisionEnter2D(Collision2D coll)
     {
@@ -42,15 +48,13 @@ public class Ball : MonoBehaviour
             pos.x = (point.x + pos.x) / 2;
             pos.y = (point.y + pos.y) / 2;
             pos.z = 0f;
-            GameObject n = Instantiate(ball, pos, UnityEngine.Quaternion.identity);
-            int s = transform.tag[-1];
+            int s = Int32.Parse(transform.tag[4..]);
             if (s < 11)
             {
+                GameObject n = Instantiate(ball, pos, UnityEngine.Quaternion.identity);
+                n.name = $"{coll.gameObject.name}{i}";
+                i += 1;
                 n.SendMessage("Resize", s + 1);
-            }
-            else
-            {
-                Destroy(n);
             }
             Destroy(coll.gameObject);
             Destroy(gameObject);

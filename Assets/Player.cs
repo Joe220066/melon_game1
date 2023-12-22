@@ -9,11 +9,13 @@ public class Player : MonoBehaviour
     public GameObject ball;
     [SerializeField] float MoveSpeed;
     bool i = true;
+    int n = 0;
     // Start is called before the first frame update
     void Start()
     {
         Vector3 pos = GetComponent<Transform>().position;
         transform.Translate(-4.5f-pos[0], 4f-pos[1], -pos[2]);
+        n = 0;
     }
 
     // Update is called once per frame
@@ -36,7 +38,9 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.DownArrow) && i)
         {
-            Instantiate(ball, Instantiate_Position.transform.position, Quaternion.identity);
+            GameObject t = Instantiate(ball, Instantiate_Position.transform.position, Quaternion.identity);
+            t.name = $"ball{n}";
+            n += 1;
             i = false;
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
