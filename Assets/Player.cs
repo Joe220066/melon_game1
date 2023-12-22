@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
             Instantiate(ball, Instantiate_Position.transform.position, Quaternion.identity);
             i = false;
         }
-        if (KeyUpEvent(KeyCode.DownArrow))
+        if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             i = true;
         }
