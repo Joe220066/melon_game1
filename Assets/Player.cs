@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using System;
+using Unity.Mathematics;
 
 public class Player : MonoBehaviour
 {
@@ -38,14 +37,29 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.DownArrow) && i)
         {
-            GameObject t = Instantiate(ball, Instantiate_Position.transform.position, Quaternion.identity);
+            Vector3 pl = Instantiate_Position.transform.position;
+            System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
+            pl.x += (float)ri.NextDouble() * 0.02f - 0.01f;
+            GameObject t = Instantiate(ball, pl, Quaternion.identity);
             t.name = $"ball{n}";
-            n += 1;
+            n++;
             i = false;
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             i = true;
         }
+    }
+    void NewBall(string s)
+    {
+        string[] str = s.Split("/");
+        Vector3 pos;
+        pos.x = float.Parse(str[0]);
+        pos.y = float.Parse(str[1]);
+        pos.z = 0f;
+        GameObject t = Instantiate(ball, pos, Quaternion.identity);
+        t.name = $"ball{n}";
+        n++;
+        t.SendMessage("Resize",int.Parse(str[2]));
     }
 }
