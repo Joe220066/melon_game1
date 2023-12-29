@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 109231872}
   - component: {fileID: 109231871}
   m_Layer: 0
-  m_Name: istockphoto-694897382-612x612
+  m_Name: Back_ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

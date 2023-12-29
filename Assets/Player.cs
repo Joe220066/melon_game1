@@ -4,8 +4,8 @@ using Unity.Mathematics;
 
 public class Player : MonoBehaviour
 {
-    public GameObject Instantiate_Position;
-    public GameObject ball;
+    [SerializeField] GameObject Instantiate_Position;
+    [SerializeField] GameObject ball;
     [SerializeField] float MoveSpeed;
     bool i = true;
     int n = 0;
