@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     float[] size_array = { 0.4f, 0.5f, 0.62f, 0.77f, 0.95f, 1.18f, 1.47f, 1.83f, 2.27f, 2.82f, 3.5f };
     GameObject pl;
     private static bool ce = true;
+    int nextball;
     void Resize(int s)
     {
         size = size_array[s];
@@ -22,8 +23,8 @@ public class Ball : MonoBehaviour
         if (size == 0)
         {
             System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
-            int a = ri.Next(0, 3);
-            Resize(a);
+            Resize(nextball);
+            nextball = ri.Next(0, 3);
         }
         pl = GameObject.Find("Player");
     }
