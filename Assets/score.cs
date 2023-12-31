@@ -1,20 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeText : MonoBehaviour
+public class Score : MonoBehaviour
 {
-    public Text myText;
-    public int score_number;
-
+    int score;
+    GameObject te;
+    void Rescore(int s)
+    {
+        score += s;
+    }
+    // Start is called before the first frame update
     void Start()
     {
-        score_number = 0;
-        myText = GetComponent<Text>();
-        myText.text = $"{score_number}";
+        te = GameObject.Find("Text");
+        te.GetComponent<TextMeshProUGUI>().text = "score:";
     }
 
+    // Update is called once per frame
     void Update()
     {
-        
+        te.GetComponent<TextMeshProUGUI>().text = $"score:{score}";
     }
 }

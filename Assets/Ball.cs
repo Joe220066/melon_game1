@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     [SerializeField] GameObject ball;
     float[] size_array = { 0.4f, 0.5f, 0.62f, 0.77f, 0.95f, 1.18f, 1.47f, 1.83f, 2.27f, 2.82f, 3.5f };
     GameObject pl;
+    GameObject text;
     private static bool ce = true;
     int nextball;
     [SerializeField] Sprite i0;
@@ -24,9 +25,6 @@ public class Ball : MonoBehaviour
     [SerializeField] Sprite i10;
     void Resize(int s)
     {
-        size = size_array[s];
-        transform.tag = $"ball{s}";
-        transform.localScale = new UnityEngine.Vector3(size, size, 0f);
         if (s == 0)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = i0;
@@ -71,6 +69,9 @@ public class Ball : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = i10;
         }
+        size = size_array[s];
+        transform.tag = $"ball{s}";
+        transform.localScale = new UnityEngine.Vector3(size, size, 0f);
     }
 
     // Start is called before the first frame update
@@ -84,6 +85,7 @@ public class Ball : MonoBehaviour
             nextball = ri.Next(0, 3);
         }
         pl = GameObject.Find("Player");
+        text = GameObject.Find("Text");
     }
 
     // Update is called once per frame
@@ -106,6 +108,7 @@ public class Ball : MonoBehaviour
                 float y = (point.y + pos.y) / 2;
                 int s = Int32.Parse(transform.tag[4..]);
                 Destroy(coll.gameObject);
+                text.SendMessage("Rescore", s + 1);
                 if (s < 11)
                 {
                     string b = $"{x}/{y}/{s + 1}";
