@@ -72,7 +72,6 @@ public class Ball : MonoBehaviour
         transform.localScale = new UnityEngine.Vector3(size, size, 0f);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         ce = true;
@@ -86,7 +85,6 @@ public class Ball : MonoBehaviour
         text = GameObject.Find("Text");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (GetComponent<Transform>().position.y < -10)
