@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using Unity.Mathematics;
 
 public class Player : MonoBehaviour
 {
