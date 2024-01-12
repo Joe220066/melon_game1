@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     [SerializeField] float MoveSpeed;
     bool i = true;
     int n = 0;
-    // Start is called before the first frame update
     void Start()
     {
         Vector3 pos = GetComponent<Transform>().position;
@@ -16,7 +15,6 @@ public class Player : MonoBehaviour
         n = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 pos = GetComponent<Transform>().position;

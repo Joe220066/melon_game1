@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2702136187161538571}
   - component: {fileID: 2702136187161538568}
   - component: {fileID: 2702136187161538565}
-  - component: {fileID: 467613732503694911}
+  - component: {fileID: 6149134262916775235}
   m_Layer: 0
   m_Name: Circle
   m_TagString: ball
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &467613732503694911
+--- !u!114 &6149134262916775235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,18 +133,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2702136187161538569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d91100b691fb9a647963ab4e2558d6ce, type: 3}
+  m_Script: {fileID: 11500000, guid: deea43cc67a89704c84d60291b90c7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 2702136187161538569}
-  i0: {fileID: 21300000, guid: bca8a538e8eafce4d98db328b40916a4, type: 3}
-  i1: {fileID: 21300000, guid: bceefef98008a084c9233470479359f4, type: 3}
-  i2: {fileID: 21300000, guid: 46162f35dc1ec1a47b57593a1084a365, type: 3}
-  i3: {fileID: 21300000, guid: 5b19f5046f922864c932a5ec9a0fbb89, type: 3}
-  i4: {fileID: 21300000, guid: 0f975fcaaebf19448b4273d80f82bd3f, type: 3}
-  i5: {fileID: 21300000, guid: c4dddfb36caa9f14386498bb8d0fd8a5, type: 3}
-  i6: {fileID: 21300000, guid: 5761112026cbf4c41acef4044e452a43, type: 3}
-  i7: {fileID: 21300000, guid: 1ba588a4695d7e045a71d17f00dfbef4, type: 3}
-  i8: {fileID: 21300000, guid: 59c5270819627ce4d98a7f278dd2da27, type: 3}
-  i9: {fileID: 21300000, guid: 91af09ff4b7f436448214741a47059b1, type: 3}
-  i10: {fileID: 21300000, guid: 07747a76858f46e4297272e9fbef6da1, type: 3}
+  i0: {fileID: 21300000, guid: 2ba271cf358f875448eb5a539c6de24d, type: 3}
+  i1: {fileID: 21300000, guid: a57b1827204eebb4ba6f54153efe857d, type: 3}
+  i2: {fileID: 21300000, guid: 33bf608edfddd8f4eaf23ff334f3667a, type: 3}
+  i3: {fileID: 21300000, guid: 9e76bdb3d0d07dd43b4124676209501e, type: 3}
+  i4: {fileID: 21300000, guid: 78495f98aa8664c429a6371dbb4e7c5b, type: 3}
+  i5: {fileID: 21300000, guid: 477b1effc8751c94ea0a5386a3dadf2f, type: 3}
+  i6: {fileID: 21300000, guid: e2689bc76def99746ac01efb0c21f5e5, type: 3}
+  i7: {fileID: 21300000, guid: 7dc7ba4ce95ec1848ac349023b0ca807, type: 3}
+  i8: {fileID: 21300000, guid: 7423c3a9b96a8144981d4c6c6809128c, type: 3}
+  i9: {fileID: 21300000, guid: 695e781792c908841a50ee6f3248002c, type: 3}
+  i10: {fileID: 21300000, guid: 086182689143bfd4d9878223a9b9badb, type: 3}
