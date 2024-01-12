@@ -8,6 +8,8 @@ public class Score : MonoBehaviour
     void Rescore(int s)
     {
         score += s;
+
+
     }
     // Start is called before the first frame update
     void Start()
