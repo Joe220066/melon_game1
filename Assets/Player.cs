@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class Player : MonoBehaviour
     [SerializeField] float MoveSpeed;
     bool i = true;
     int n = 0;
+    System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
+    int nextball;
     void Start()
     {
         Vector3 pos = GetComponent<Transform>().position;
         transform.Translate(-4.5f-pos[0], 4f-pos[1], -pos[2]);
         n = 0;
+        nextball = ri.Next(0, 3);
     }
 
     void Update()
@@ -35,11 +39,12 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow) && i)
         {
             Vector3 pl = Instantiate_Position.transform.position;
-            System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
             pl.x += (float)ri.NextDouble() * 0.02f - 0.01f;
             GameObject t = Instantiate(ball, pl, Quaternion.identity);
             t.name = $"ball{n}";
+            t.SendMessage("Resize", nextball);
             n++;
+            nextball = ri.Next(0, 3);
             i = false;
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))

@@ -2,14 +2,22 @@ using UnityEngine;
 
 public class Voice : MonoBehaviour
 {
-    AudioSource audiosource;
+    AudioSource auso;
     void Start()
     {
-        GetComponent<AudioSource>().volume = 0.5f;
-        GetComponent<AudioSource>().Play();
+        auso = GetComponent<AudioSource>();
+        auso.volume = 0.5f;
+        auso.Play();
+    }
+    private void Update()
+    {
+        if (!auso.isPlaying)
+        {
+            auso.Play();
+        }
     }
     public void OnSliderValueChanged(float slider_value)
     {
-        GetComponent<AudioSource>().volume = slider_value;
+        auso.volume = slider_value;
     }
 }
