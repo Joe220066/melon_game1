@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     bool i = true;
     int n = 0;
     System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
-    int nextball;
+    static public int nextball;
     void Start()
     {
         Vector3 pos = GetComponent<Transform>().position;
