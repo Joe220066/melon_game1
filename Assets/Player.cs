@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
                 transform.Translate(MoveSpeed * Time.deltaTime, 0f, 0f);
             }
         }
-        else if (Input.GetKey(KeyCode.DownArrow) && i)
+        else if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             Vector3 pl = Instantiate_Position.transform.position;
             pl.x += (float)ri.NextDouble() * 0.02f - 0.01f;
@@ -45,11 +45,6 @@ public class Player : MonoBehaviour
             t.SendMessage("Resize", nextball);
             n++;
             nextball = ri.Next(0, 3);
-            i = false;
-        }
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            i = true;
         }
     }
     void NewBall(string s)
