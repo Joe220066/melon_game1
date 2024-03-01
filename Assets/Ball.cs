@@ -4,7 +4,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField] GameObject ball;
-    readonly float[] size_array = { 0.4f, 0.5f, 0.62f, 0.77f, 0.95f, 1.18f, 1.47f, 1.83f, 2.27f, 2.82f, 3.5f };
+    readonly float[] size_array = { 0.4f, 0.9f, 1f, 1.3f, 1.8f, 2.2f, 2.5f, 2.9f, 3.2f, 3.4f, 3.7f };
     GameObject pl;
     GameObject text;
     private static bool ce = true;
