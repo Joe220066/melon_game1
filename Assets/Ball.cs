@@ -7,8 +7,8 @@ public class Ball : MonoBehaviour
     readonly float[] size_array = { 0.4f, 0.9f, 1f, 1.3f, 1.8f, 2.2f, 2.5f, 2.9f, 3.2f, 3.4f, 3.7f };
     GameObject pl;
     GameObject text;
+    [SerializeField] GameObject go;
     private static bool ce = true;
-    static public bool gameover = true;
     [SerializeField] Sprite[] img;
     void Resize(int s)
     {
@@ -29,13 +29,19 @@ public class Ball : MonoBehaviour
     {
         if (GetComponent<Transform>().position.y < -5)
         {
-            gameover = false;
+            Player.gameover = false;
+            Vector3 pos;
+            pos.x = 0;
+            pos.y = 0;
+            pos.z = 0;
+            Instantiate(go, pos, Quaternion.identity);
             Destroy(gameObject);
         }
     }
+    
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (transform.CompareTag(coll.gameObject.tag) && Ball.gameover)
+        if (transform.CompareTag(coll.gameObject.tag) && Player.gameover)
         {
             if (ce)
             {
