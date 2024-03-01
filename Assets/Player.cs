@@ -22,21 +22,21 @@ public class Player : MonoBehaviour
     void Update()
     {
         Vector3 pos = GetComponent<Transform>().position;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && Ball.gameover)
         {
             if (pos[0] > -7)
             {
                 transform.Translate(-MoveSpeed*Time.deltaTime,0f,0f);
             }
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) && Ball.gameover)
         {
             if (pos[0] < -2)
             {
                 transform.Translate(MoveSpeed * Time.deltaTime, 0f, 0f);
             }
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && Ball.gameover)
         {
             Vector3 pl = Instantiate_Position.transform.position;
             pl.x += (float)ri.NextDouble() * 0.02f - 0.01f;

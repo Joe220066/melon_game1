@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     GameObject pl;
     GameObject text;
     private static bool ce = true;
+    static public bool gameover = true;
     [SerializeField] Sprite[] img;
     void Resize(int s)
     {
@@ -26,14 +27,15 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<Transform>().position.y < -10)
+        if (GetComponent<Transform>().position.y < -5)
         {
+            gameover = false;
             Destroy(gameObject);
         }
     }
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (transform.CompareTag(coll.gameObject.tag))
+        if (transform.CompareTag(coll.gameObject.tag) && Ball.gameover)
         {
             if (ce)
             {
