@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
     static public int nextball;
     static public bool gameover;
+    static public float playerx;
     void Start()
     {
         Vector3 pos = GetComponent<Transform>().position;
@@ -22,27 +23,30 @@ public class Player : MonoBehaviour
     void Update()
     {
         Vector3 pos = GetComponent<Transform>().position;
-        if (Input.GetKey(KeyCode.LeftArrow) && Player.gameover)
+        playerx = pos[0];
+        if (Input.GetKey(KeyCode.LeftArrow) && gameover)
         {
             if (pos[0] > -7)
             {
                 transform.Translate(-MoveSpeed*Time.deltaTime,0f,0f);
             }
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && Player.gameover)
+        else if (Input.GetKey(KeyCode.RightArrow) && gameover)
         {
             if (pos[0] < -2)
             {
                 transform.Translate(MoveSpeed * Time.deltaTime, 0f, 0f);
             }
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && Player.gameover)
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && gameover)
         {
             Vector3 pl = Instantiate_Position.transform.position;
             pl.x += (float)ri.NextDouble() * 0.02f - 0.01f;
+            pl.y -= 0.75f;
             GameObject t = Instantiate(ball, pl, Quaternion.identity);
             t.name = $"ball{n}";
             t.SendMessage("Resize", nextball);
+            t.GetComponent<Rigidbody2D>().simulated = false;
             n++;
             nextball = ri.Next(0, 3);
         }

@@ -37,6 +37,14 @@ public class Ball : MonoBehaviour
             Instantiate(go, pos, Quaternion.identity);
             Destroy(gameObject);
         }
+        if (Input.GetKey(KeyCode.DownArrow) && Player.gameover)
+        {
+            GetComponent<Rigidbody2D>().simulated = true;
+        }
+        if (!GetComponent<Rigidbody2D>().simulated)
+        {
+            transform.Translate(Player.playerx - GetComponent<Transform>().position[0], 0f, 0f);
+        }
     }
     
     void OnCollisionEnter2D(Collision2D coll)
