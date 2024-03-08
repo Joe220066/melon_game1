@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
         n = 0;
         nextball = ri.Next(0, 3);
         Player.gameover = true;
+        SummonBall();
     }
 
     void Update()
@@ -40,17 +41,10 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.DownArrow) && gameover)
         {
-            Vector3 pl = Instantiate_Position.transform.position;
-            pl.x += (float)ri.NextDouble() * 0.02f - 0.01f;
-            pl.y -= 0.75f;
-            GameObject t = Instantiate(ball, pl, Quaternion.identity);
-            t.name = $"ball{n}";
-            t.SendMessage("Resize", nextball);
-            t.GetComponent<Rigidbody2D>().simulated = false;
-            n++;
-            nextball = ri.Next(0, 3);
+            SummonBall();
         }
     }
+
     void NewBall(string s)
     {
         string[] str = s.Split("/");
@@ -62,5 +56,17 @@ public class Player : MonoBehaviour
         t.name = $"ball{n}";
         n++;
         t.SendMessage("Resize",int.Parse(str[2]));
+    }
+    void SummonBall()
+    {
+        Vector3 pl = Instantiate_Position.transform.position;
+        pl.x += (float)ri.NextDouble() * 0.02f - 0.01f;
+        pl.y -= 0.75f;
+        GameObject t = Instantiate(ball, pl, Quaternion.identity);
+        t.name = $"ball{n}";
+        t.SendMessage("Resize", nextball);
+        t.GetComponent<Rigidbody2D>().simulated = false;
+        n++;
+        nextball = ri.Next(0, 3);
     }
 }
