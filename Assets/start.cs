@@ -13,6 +13,15 @@ public class start : MonoBehaviour
     {
         // 使用SceneManager.LoadSceneAsync來異步加載場景
         // 如果要同步加載，可以使用LoadScene方法
-        SceneManager.LoadSceneAsync(targetSceneName);
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("222");
+            SceneManager.LoadSceneAsync(targetSceneName);
+        }
+
+    }
+    void Update()
+    {
+        
     }
 }
