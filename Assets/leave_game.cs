@@ -5,12 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class leave_game : MonoBehaviour
 {
-    // Start is called before the first frame update
-    
-    void Start()
-    {
-        
-    }
 
     public void StartGame ()
     {
@@ -19,6 +13,7 @@ public class leave_game : MonoBehaviour
 
     public void Quitgame()
     {
+        Debug.Log(0);
         Application.Quit();
     }
     // Update is called once per frame
