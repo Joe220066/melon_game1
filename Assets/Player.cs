@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     int n = 0;
     System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
     static public int nextball;
-    static public bool gameover;
+    static public bool gamerun;
     static public float playerx;
     void Start()
     {
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         transform.Translate(-4.5f-pos[0], 4f-pos[1], -pos[2]);
         n = 0;
         nextball = ri.Next(0, 3);
-        Player.gameover = true;
+        gamerun = true;
         SummonBall();
     }
 
@@ -25,21 +25,21 @@ public class Player : MonoBehaviour
     {
         Vector3 pos = GetComponent<Transform>().position;
         playerx = pos[0];
-        if (Input.GetKey(KeyCode.LeftArrow) && gameover)
+        if (Input.GetKey(KeyCode.LeftArrow) && gamerun)
         {
             if (pos[0] > -7)
             {
                 transform.Translate(-MoveSpeed*Time.deltaTime,0f,0f);
             }
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && gameover)
+        else if (Input.GetKey(KeyCode.RightArrow) && gamerun)
         {
             if (pos[0] < -2)
             {
                 transform.Translate(MoveSpeed * Time.deltaTime, 0f, 0f);
             }
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && gameover)
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && gamerun)
         {
             SummonBall();
         }
