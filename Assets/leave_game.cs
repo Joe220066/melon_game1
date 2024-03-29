@@ -8,20 +8,20 @@ public class leave_game : MonoBehaviour
 
     public void StartGame ()
     {
-        SceneManager.LoadScene("Scene-1");
+        SceneManager.LoadScene("test");
     }
 
     public void Quitgame()
     {
         Debug.Log(0);
-        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            Application.Quit();
+            UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 }
