@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         SummonBall();
     }
 
-    void Update()
+    private void Update()
     {
         Vector3 pos = GetComponent<Transform>().position;
         playerx = pos[0];

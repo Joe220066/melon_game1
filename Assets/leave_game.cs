@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class leave_game : MonoBehaviour
 {
@@ -17,11 +18,4 @@ public class leave_game : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
     }
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-    }
 }
