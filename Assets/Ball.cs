@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     GameObject text;
     private static bool ce = true;
     [SerializeField] Sprite[] img;
+    System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
     void Resize(int s)
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = img[s];
@@ -33,6 +34,10 @@ public class Ball : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.DownArrow) && Player.gamerun)
         {
+            if (GetComponent<Rigidbody2D>().simulated == false)
+            {
+                transform.Translate((float)ri.NextDouble() * 0.02f - 0.01f, 0f, 0f);
+            }
             GetComponent<Rigidbody2D>().simulated = true;
         }
         if (!GetComponent<Rigidbody2D>().simulated)

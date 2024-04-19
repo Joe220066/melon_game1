@@ -60,7 +60,6 @@ public class Player : MonoBehaviour
     void SummonBall()
     {
         Vector3 pl = Instantiate_Position.transform.position;
-        pl.x += (float)ri.NextDouble() * 0.02f - 0.01f;
         pl.y -= 0.75f;
         GameObject t = Instantiate(ball, pl, Quaternion.identity);
         t.name = $"ball{n}";
