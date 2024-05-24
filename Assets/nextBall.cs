@@ -9,7 +9,6 @@ public class NextBall : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = img[s];
         float size = size_array[s];
-        transform.tag = $"ball{s}";
         transform.localScale = new Vector3(size, size, 0f);
     }
 

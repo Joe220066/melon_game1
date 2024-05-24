@@ -25,23 +25,27 @@ public class Player : MonoBehaviour
     {
         Vector3 pos = GetComponent<Transform>().position;
         playerx = pos[0];
-        if (Input.GetKey(KeyCode.LeftArrow) && gamerun)
+        if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && gamerun)
+        {
+            SummonBall();
+        }
+        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && gamerun)
         {
             if (pos[0] > -7)
             {
                 transform.Translate(-MoveSpeed*Time.deltaTime,0f,0f);
             }
         }
-        else if (Input.GetKey(KeyCode.RightArrow) && gamerun)
+        else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && gamerun)
         {
             if (pos[0] < -2)
             {
                 transform.Translate(MoveSpeed * Time.deltaTime, 0f, 0f);
             }
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && gamerun)
+        if (Input.GetKey(KeyCode.Escape))
         {
-            SummonBall();
+            gamerun = false;
         }
     }
 

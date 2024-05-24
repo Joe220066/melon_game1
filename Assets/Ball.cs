@@ -27,18 +27,18 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (GetComponent<Transform>().position.y < -5)
-        {
-            Player.gamerun = false;
-            Destroy(gameObject);
-        }
-        if (Input.GetKey(KeyCode.DownArrow) && Player.gamerun)
+        if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && Player.gamerun)
         {
             if (GetComponent<Rigidbody2D>().simulated == false)
             {
                 transform.Translate((float)ri.NextDouble() * 0.02f - 0.01f, 0f, 0f);
             }
             GetComponent<Rigidbody2D>().simulated = true;
+        }
+        if (GetComponent<Transform>().position.y < -5)
+        {
+            Player.gamerun = false;
+            Destroy(gameObject);
         }
         if (!GetComponent<Rigidbody2D>().simulated)
         {
