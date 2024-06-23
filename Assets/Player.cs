@@ -9,43 +9,34 @@ public class Player : MonoBehaviour
     int n = 0;
     System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
     static public int nextball;
-    static public bool gamerun;
     static public float playerx;
-    void Start()
+    public void Start()
     {
         Vector3 pos = GetComponent<Transform>().position;
         transform.Translate(-4.5f-pos[0], 4f-pos[1], -pos[2]);
-        n = 0;
-        nextball = ri.Next(0, 3);
-        gamerun = true;
-        SummonBall();
     }
 
     private void Update()
     {
         Vector3 pos = GetComponent<Transform>().position;
         playerx = pos[0];
-        if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && gamerun)
+        if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && Game_control.gamerun)
         {
             SummonBall();
         }
-        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && gamerun)
+        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && Game_control.gamerun)
         {
             if (pos[0] > -7)
             {
                 transform.Translate(-MoveSpeed*Time.deltaTime,0f,0f);
             }
         }
-        else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && gamerun)
+        else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && Game_control.gamerun)
         {
             if (pos[0] < -2)
             {
                 transform.Translate(MoveSpeed * Time.deltaTime, 0f, 0f);
             }
-        }
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            gamerun = false;
         }
     }
 
