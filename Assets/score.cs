@@ -10,7 +10,7 @@ public class Score : MonoBehaviour
     }
     void Start()
     {
-        gameObject.GetComponent<TextMeshProUGUI>().text = "分數:";
+        gameObject.GetComponent<TextMeshProUGUI>().text = "分數:0";
     }
 
     void Update()
@@ -20,6 +20,6 @@ public class Score : MonoBehaviour
     void zero()
     {
         score = 0;
-        gameObject.GetComponent<TextMeshProUGUI>().text = $"分數:{score}";
+        gameObject.GetComponent<TextMeshProUGUI>().text = $"分數:0";
     }
 }

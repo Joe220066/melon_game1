@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using UnityEngine;
 
 public class Game_control: MonoBehaviour
@@ -34,6 +35,7 @@ public class Game_control: MonoBehaviour
             {
                 Backtogame();
             }
+            Thread.Sleep(200);
         }
     }
 
