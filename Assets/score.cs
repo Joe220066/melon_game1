@@ -4,7 +4,7 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     int score;
-    void Rescore(int s)
+    void Scoreadd(int s)
     {
         score += s;
     }
@@ -19,7 +19,6 @@ public class Score : MonoBehaviour
     }
     void zero()
     {
-        Debug.Log(0);
         score = 0;
         gameObject.GetComponent<TextMeshProUGUI>().text = $"分數:{score}";
     }

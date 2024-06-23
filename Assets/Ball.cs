@@ -5,9 +5,7 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] GameObject ball;
     readonly float[] size_array = { 0.4f, 0.9f, 1f, 1.3f, 1.8f, 2.2f, 2.5f, 2.9f, 3.2f, 3.4f, 3.7f };
-    GameObject pl;
-    GameObject text;
-    private static bool ce = true;
+    GameObject pl, text, control;
     [SerializeField] Sprite[] img;
     System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
     void Resize(int s)
@@ -20,14 +18,14 @@ public class Ball : MonoBehaviour
 
     void Start()
     {
-        ce = true;
         pl = GameObject.Find("Player");
-        text = GameObject.Find("Text");
+        text = GameObject.Find("Text_score");
+        control = GameObject.Find("Back_ground");
     }
 
     void Update()
     {
-        if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && Player.gamerun)
+        if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && Game_control.gamerun)
         {
             if (GetComponent<Rigidbody2D>().simulated == false)
             {
@@ -37,7 +35,8 @@ public class Ball : MonoBehaviour
         }
         if (GetComponent<Transform>().position.y < -5)
         {
-            Player.gamerun = false;
+            Game_control.gamerun = false;
+            control.SendMessage("Gameover");
             Destroy(gameObject);
         }
         if (!GetComponent<Rigidbody2D>().simulated)
@@ -48,29 +47,26 @@ public class Ball : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (transform.CompareTag(coll.gameObject.tag) && Player.gamerun)
+        if (transform.CompareTag(coll.gameObject.tag))
         {
-            if (ce)
+            coll.gameObject.tag = "ball";
+            Vector3 point = coll.gameObject.transform.position;
+            Vector3 pos = GetComponent<Transform>().position;
+            float x = (point.x + pos.x) / 2;
+            float y = (point.y + pos.y) / 2;
+            int s = Int32.Parse(transform.tag[4..]);
+            Destroy(coll.gameObject);
+            text.SendMessage("Scoreadd", s + 1);
+            if (s < 11)
             {
-                Vector3 point = coll.gameObject.transform.position;
-                Vector3 pos = GetComponent<Transform>().position;
-                float x = (point.x + pos.x) / 2;
-                float y = (point.y + pos.y) / 2;
-                int s = Int32.Parse(transform.tag[4..]);
-                Destroy(coll.gameObject);
-                text.SendMessage("Rescore", s + 1);
-                if (s < 11)
-                {
-                    string b = $"{x}/{y}/{s + 1}";
-                    pl.SendMessage("NewBall", b);
-                }
-                ce = false;
-                Destroy(gameObject);
+                string b = $"{x}/{y}/{s + 1}";
+                pl.SendMessage("NewBall", b);
             }
-        }
-        else
-        {
-            ce = true;
+            else
+            {
+                text.SendMessage("Scoreadd", 89);
+            }
+            Destroy(gameObject);
         }
     }
 }
