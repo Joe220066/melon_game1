@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
-public class leave_game : MonoBehaviour
+public class Game_control: MonoBehaviour
 {
 
     public void StartGame ()
     {
-        SceneManager.LoadScene("test");
+        SceneManager.LoadScene("main");
     }
 
     public void Quitgame()
