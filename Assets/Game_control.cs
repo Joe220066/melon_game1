@@ -5,17 +5,17 @@ using UnityEngine;
 public class Game_control: MonoBehaviour
 {
     private GameObject[] ball;
-    GameObject score, again, exit, gameover, player, backtogame;
+    GameObject score, again, exit, gameover_image, player, backtogame;
     Vector3 pos;
     System.Random ri = new System.Random(Guid.NewGuid().GetHashCode());
-    static public int nextball;
     static public bool gamerun;
+    bool gameover;
     private void Start()
     {
         score = GameObject.Find("Text_score");
         again = GameObject.Find("Button_again");
         exit = GameObject.Find("Button_exit");
-        gameover = GameObject.Find("gameover");
+        gameover_image = GameObject.Find("gameover");
         player = GameObject.Find("Player");
         backtogame = GameObject.Find("Button_backtogame");
         pos.x = 0f;
@@ -59,22 +59,28 @@ public class Game_control: MonoBehaviour
 
     public void Gameover()
     {
+        gameover = true;
         pos.y = -2f;
         again.transform.position = pos;
         pos.y = -3f;
         exit.transform.position = pos;
         pos.y = 2f;
-        gameover.transform.position = pos;
+        gameover_image.transform.position = pos;
     }
 
     void Init()
     {
-        nextball = ri.Next(0, 3);
+        Player.nextball = ri.Next(0, 3);
         gamerun = true;
+        gameover = false;
+        pos.x = -4.5f;
+        pos.y = 4;
+        player.transform.position = pos;
+        pos.x = 0;
         pos.y = 10f;
         again.transform.position = pos;
         exit.transform.position = pos;
-        gameover.transform.position = pos;
+        gameover_image.transform.position = pos;
         backtogame.transform.position = pos;
         score.SendMessage("zero");
         player.SendMessage("SummonBall");
@@ -93,11 +99,18 @@ public class Game_control: MonoBehaviour
 
     public void Backtogame()
     {
-        gamerun = true;
         pos.y = 10f;
         again.transform.position = pos;
         exit.transform.position = pos;
-        gameover.transform.position = pos;
+        gameover_image.transform.position = pos;
         backtogame.transform.position = pos;
+        if (gameover)
+        {
+            Gameover();
+        }
+        else
+        {
+            gamerun = true;
+        }
     }
 }
